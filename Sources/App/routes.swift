@@ -1,8 +1,10 @@
 import Fluent
 import Vapor
 
+let controller = CommandConntroller()
+
 func routes(_ app: Application) throws {
-    let controller = CommandConntroller()
+  
 //    app.get { req async throws in
 //        try await req.view.render("index", ["title": "Hello Vapor!"])
 //    }
@@ -20,6 +22,7 @@ func routes(_ app: Application) throws {
     }
     
     controller.handleGETRequest(app: app)
+    controller.handlePOSTRequest(app: app)
 
     try app.register(collection: TodoController())
 }
