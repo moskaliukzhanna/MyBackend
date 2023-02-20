@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Vapor
 
 enum WatchCommand: String, Codable {
     case initial = "/init"
@@ -62,7 +63,7 @@ enum WebSocketMessageType: String, Codable {
     case incomingMessage = "GET" // client ---> server
 }
 
-struct OutcomingMessage: Codable {
+struct OutcomingMessage: Content {
     let method: WebSocketMessageType
     var id: Int? = nil
     let path: WatchCommand
@@ -70,7 +71,7 @@ struct OutcomingMessage: Codable {
     var data: Details? = nil
 }
 
-struct Details: Codable {
+struct Details: Content {
     var element: Element? = nil
     var timeout: Int? = nil
     var using: Identification? = nil
@@ -82,13 +83,13 @@ struct Details: Codable {
     var times: Int? = nil
 }
 
-enum Identification: String, Codable {
+enum Identification: String, Content {
     case id = "id"
     case text = "text"
     case coordinates = "coordinates"
 }
 
-struct IdentificationProperties: Codable {
+struct IdentificationProperties: Content {
     var using: Identification? = nil
     var value: String? = nil
 }
