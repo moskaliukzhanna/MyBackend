@@ -12,6 +12,7 @@ enum WatchCommand: String, Codable {
     case initial = "/init"
     case shutdown = "/shutdown"
     case launch = "/launch"
+    case quit = "/quit"
     case requestHierarchyElement = "/requestHierarchy/element"
     case requestHierarchyApplication = "/requestHierarchy/application"
     case launchSettings = "/settings/launch"

@@ -17,6 +17,7 @@ final class CommandConntroller {
         commands.append(OutcomingMessage(method: .outcomingMessage, id: 12345, path: .pressHomeButton))
         commands.append(OutcomingMessage(method: .outcomingMessage, id: 12346, path: .homeScreenPress))
         commands.append(OutcomingMessage(method: .outcomingMessage, id: 12347, path: .homeScreenEdit))
+        commands.append(OutcomingMessage(method: .outcomingMessage, path: .quit))
     }
     
      func handleGETRequest(app: Application) {
