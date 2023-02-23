@@ -67,9 +67,34 @@ enum WebSocketMessageType: String, Codable {
 struct OutcomingMessage: Content {
     let method: WebSocketMessageType
     var id: Int? = nil
-    let path: WatchCommand
+    var path: String?
     var timeout: Double? = nil
     var data: Details? = nil
+    
+    var value: AnyCodable? = nil
+
+    var callbackId: String? = nil
+    var passthrough: AnyCodable? = nil
+    var granted: AnyCodable? = nil
+    var options: Set<NotificationOptions>? = nil
+    var notificationSettings: NotificationStatus? = nil
+    var requestId: String? = nil
+    var categories: [NotificationCategory]? = nil
+    var notificationRequest: NotificationRequest? = nil
+    var notification: Notification? = nil
+    var response: NotificationResponse? = nil
+    var identifiers: [String]? = nil
+    var configuration: Configuration? = nil
+    var date: Int? = nil
+    var toState: String? = nil
+    var fromState: String? = nil
+    var errorMessage: String? = nil
+    
+    
+//    var command: WatchCommand {
+//        guard let path = path else { return nil }
+//        let command = WatchCommand(rawValue: path)
+//    }
 }
 
 struct Details: Content {
