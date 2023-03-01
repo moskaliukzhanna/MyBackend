@@ -19,7 +19,8 @@ final class CommandConntroller {
 //        commands.append(OutcomingMessage(method: .outcomingMessage, id: 12347, path: WatchCommand.homeScreenEdit.rawValue))
         commands.append(OutcomingMessage(method: .outcomingMessage, id: 12348, path: "/swizzle/userNotificationCenter.requestAuthorization.setState", passthrough: AnyCodable(value: true)))
         commands.append(OutcomingMessage(method: .outcomingMessage, id: 12349, path:  "/swizzle/userNotificationCenter.requestAuthorization.call", options: [.alert, .badge, .sound]))
-        commands.append(OutcomingMessage(method: .outcomingMessage, path: nil, timeout: 30.0))
+        commands.append(OutcomingMessage(method: .outcomingMessage, id: 123410, path: WatchCommand.alertTap.rawValue, timeout: 5.0, data: Details(using: .text, value: "Don’t Allow")))
+//        commands.append(OutcomingMessage(method: .outcomingMessage, path: nil, timeout: 30.0))
 //        commands.append(NoCommand)
 //        commands.append(OutcomingMessage(method: .outcomingMessage, path: WatchCommand.quit.rawValue))
     }
@@ -27,7 +28,7 @@ final class CommandConntroller {
      func handleGETRequest(app: Application) {
          appendCommands()
          app.get("command") { [weak self] req -> OutcomingMessage in
-            let defaultCommand = OutcomingMessage(method: .outcomingMessage, path: nil, timeout: 30.0)
+             let defaultCommand = OutcomingMessage(method: .outcomingMessage, path: WatchCommand.quit.rawValue, timeout: 60.0)
             guard let self = self else { return defaultCommand }
             guard let command = self.commands.first else { return defaultCommand }
             self.commands.removeFirst()
