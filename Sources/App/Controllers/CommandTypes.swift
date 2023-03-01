@@ -9,8 +9,6 @@ import Foundation
 import Vapor
 
 enum WatchCommand: String, Codable {
-    case initial = "/init"
-    case shutdown = "/shutdown"
     case launch = "/ui/launch"
     case quit = "/quit"
     case requestHierarchyElement = "/ui/requestHierarchy/element"
